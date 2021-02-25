@@ -14,6 +14,8 @@ public class Joystick : MonoBehaviour {
     public Transform circle;
     public Transform outerCircle;
 
+    public Transform fieldOfViewObj;
+
 	// Update is called once per frame
 	void Update () {
         if(Input.GetMouseButtonDown(0)){
@@ -65,5 +67,9 @@ public class Joystick : MonoBehaviour {
 	}
 	void moveCharacter(Vector2 direction){
         player.Translate(direction/radius * speed * Time.deltaTime);
+        print(direction);
+
+        // float angle = Mathf.Atan2(player.transform.position.x + direction.x, player.transform.position.y + direction.y) * Mathf.Rad2Deg;
+        // fieldOfViewObj.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -angle));
     }
 }

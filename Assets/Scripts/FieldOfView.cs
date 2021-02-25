@@ -62,7 +62,7 @@ public class FieldOfView : MonoBehaviour
 		List<Vector3> viewPoints = new List<Vector3> ();
 		ViewCastInfo oldViewCast = new ViewCastInfo ();
 		for (int i = 0; i <= stepCount; i++) {
-			float angle = transform.eulerAngles.y - viewAngle / 2 + stepAngleSize * i;
+			float angle = -transform.eulerAngles.z - viewAngle / 2 + stepAngleSize * i;
 			ViewCastInfo newViewCast = ViewCast (angle);
 
 			if (i > 0) {
@@ -142,7 +142,7 @@ public class FieldOfView : MonoBehaviour
 
     public Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal) {
     	if(!angleIsGlobal) {
-    		angleInDegrees += transform.eulerAngles.y;
+    		angleInDegrees -= transform.eulerAngles.z;
     	}
     	return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad),Mathf.Cos(angleInDegrees * Mathf.Deg2Rad),0);
     }
