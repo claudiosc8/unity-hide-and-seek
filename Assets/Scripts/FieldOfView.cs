@@ -47,7 +47,9 @@ public class FieldOfView : MonoBehaviour
    			Transform target = targetsInViewRadius[i].transform;
    			Vector3 dirToTarget = (target.position - transform.position).normalized;
 
-   			if(Vector3.Angle (transform.up, dirToTarget) < viewAngle / 2) {
+   			float currentAngle = viewMeshFilter.transform.rotation.z + viewAngle;
+   			print(currentAngle);
+   			if(Vector3.Angle (viewMeshFilter.transform.up, dirToTarget) < viewAngle / 2) {
    				float distToTarget = Vector3.Distance(transform.position, target.position);
    				if(!Physics2D.Raycast(transform.position, dirToTarget, distToTarget, obstacleMask)) {
    					visibleTargets.Add(target);
@@ -62,7 +64,7 @@ public class FieldOfView : MonoBehaviour
 		List<Vector3> viewPoints = new List<Vector3> ();
 		ViewCastInfo oldViewCast = new ViewCastInfo ();
 		for (int i = 0; i <= stepCount; i++) {
-			float angle = -transform.eulerAngles.z - viewAngle / 2 + stepAngleSize * i;
+			float angle = -viewMeshFilter.transform.eulerAngles.z - viewAngle / 2 + stepAngleSize * i;
 			ViewCastInfo newViewCast = ViewCast (angle);
 
 			if (i > 0) {
@@ -90,7 +92,7 @@ public class FieldOfView : MonoBehaviour
 
 		vertices [0] = Vector3.zero;
 		for (int i = 0; i < vertexCount - 1; i++) {
-			vertices [i + 1] = transform.InverseTransformPoint(viewPoints [i]);
+			vertices [i + 1] = viewMeshFilter.transform.InverseTransformPoint(viewPoints [i]);
 
 			if (i < vertexCount - 2) {
 				triangles [i * 3] = 0;
@@ -104,6 +106,7 @@ public class FieldOfView : MonoBehaviour
 		viewMesh.vertices = vertices;
 		viewMesh.triangles = triangles;
 		viewMesh.RecalculateNormals ();
+		
 	}
 
 	EdgeInfo FindEdge(ViewCastInfo minViewCast, ViewCastInfo maxViewCast) {
