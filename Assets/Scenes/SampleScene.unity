@@ -417,7 +417,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 547, y: -97}
-  m_SizeDelta: {x: 500, y: 500}
+  m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &271742838
 MonoBehaviour:
@@ -619,7 +619,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 547, y: -97}
-  m_SizeDelta: {x: 200, y: 200}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &441278023
 MonoBehaviour:
@@ -1370,7 +1370,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 532465708}
   speed: 10
-  radius: 200
+  radius: 100
   circle: {fileID: 441278022}
   outerCircle: {fileID: 271742837}
   viewContainer: {fileID: 604547902}
