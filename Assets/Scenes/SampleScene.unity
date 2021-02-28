@@ -1538,7 +1538,7 @@ GameObject:
   - component: {fileID: 1960337474}
   - component: {fileID: 1960337473}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: View Mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
