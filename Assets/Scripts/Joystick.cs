@@ -34,12 +34,12 @@ public class Joystick : MonoBehaviour {
 
 	private void FixedUpdate(){
         if(touchStart) {
-            bool isRightHalfofScreen = pointA.x > Screen.width / 2.0f;
-            showControls(isRightHalfofScreen ? move_circle : rotate_circle);
+            bool isLeftHalfofScreen = pointA.x < Screen.width / 2.0f;
+            showControls(isLeftHalfofScreen ? move_circle : rotate_circle);
             Vector2 offset = pointB - pointA;
             Vector2 direction = Vector2.ClampMagnitude(offset, radius);
             
-            if(isRightHalfofScreen) {
+            if(isLeftHalfofScreen) {
                 moveCharacter(direction);
             } else {
                 rotateCharacter(direction);
